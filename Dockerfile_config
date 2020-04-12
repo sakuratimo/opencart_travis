@@ -1,0 +1,12 @@
+FROM ubuntu:18.04
+USER root
+
+ADD resource/config.sh /config.sh
+ADD resource/config.py /config.py
+ADD requirements_config.txt /requirements_config.txt
+RUN chmod +x /config.sh 
+
+RUN apt update \
+	&& apt install curl -y
+
+CMD ["bash", "-c", "echo 1 && bash /config.sh"]

@@ -1,4 +1,4 @@
-#language: bash
+language: bash
 services:
   - docker
 
@@ -18,7 +18,7 @@ addons:
     hosts:
         - opencart
 install:
-  - sed -i 's/[0-9]*[1-9][0-9]*:80/'${PORT}':80/g' docker-compose.yml
+  #- sed -i 's/[0-9]*[1-9][0-9]*:80/'${PORT}':80/g' docker-compose.yml
   - docker-compose build
   - docker-compose up -d
   - sleep ${SLEEP_TIME}

@@ -16,12 +16,12 @@ pip3 install -r /requirements_poc.txt
 chmod 755 /poc.py
 #echo 'Permission of poc.py granted'
 #echo 'ready to run poc.py'
-python3 poc.py
+python3 /poc.py
 #echo 'exp.py executed'
 chmod 755 /exp.py
 #echo 'Permission of exp.py granted'
 #echo 'ready to run exp.py'
-python3 exp.py
+python3 /exp.py
 #echo 'exp.py executed'
 
 

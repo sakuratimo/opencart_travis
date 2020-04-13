@@ -54,8 +54,6 @@ services:
       - opencart
     
 
-
-
 volumes:
   mariadb_data:
     driver: local

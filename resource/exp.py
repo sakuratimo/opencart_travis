@@ -162,7 +162,7 @@ def download():
     r=requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies,verify=False)
     #print(r.status_code)
     r_check=r.text
-    print(r_check)
+    #print(r_check)
     return r_check
 
 def check_poc(r_check):

@@ -17,5 +17,5 @@ pip3 install -r /requirements_config.txt
 #echo 'Requests addon installed'
 chmod 777 /config.py
 #echo 'ready to run config.py'
-python3 config.py
+python3 /config.py
 #echo 'config.py executed'

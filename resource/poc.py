@@ -80,6 +80,6 @@ if __name__ == "__main__":
     n1=setfile()
     n2=setdownload()
     if (n1==200 and n2==200):
-        print("success poc")
+        print("PoC success!")
     else:
-        print("fail poc")
+        print("PoC failed!")

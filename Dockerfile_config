@@ -1,11 +1,11 @@
-FROM python:alpine3.7
+FROM ubuntu:18.04
+USER root
 
+ADD resource/config.sh /config.sh
 ADD resource/config.py /config.py
 ADD resource/datafill.sql /datafill.sql
 ADD requirements_config.txt /requirements_config.txt
-#RUN pip install -r requirements_config.txt
-RUN python3 -m pip install --upgrade pip  -i https://pypi.tuna.tsinghua.edu.cn/simple
-RUN pip3 install requests==2.23.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
-RUN pip3 install requests-toolbelt==0.9.1  -i https://pypi.tuna.tsinghua.edu.cn/simple
-EXPOSE 888
-CMD ["bash", "-c", "echo 1 && bash config.sh"]
+RUN chmod +x /config.sh 
+
+
+CMD ["bash", "-c", "echo 1 && bash /config.sh"]

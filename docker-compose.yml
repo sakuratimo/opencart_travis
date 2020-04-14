@@ -42,13 +42,13 @@ services:
       - opencart
 
   
-  config:  
-    build:
-      context: .
-      dockerfile:  Dockerfile_config
-    container_name: config-app
-    depends_on:
-      - opencart  
+  # config:  
+  #   build:
+  #     context: .
+  #     dockerfile:  Dockerfile_config
+  #   container_name: config-app
+  #   depends_on:
+  #     - opencart  
 
 volumes:
   mariadb_data:

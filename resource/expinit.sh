@@ -18,6 +18,7 @@ chmod +x /exp.py
 #echo 'Permission of poc.py granted'
 #echo 'ready to run poc.py'
 python3 /poc.py
+sleep 3
 #echo 'exp.py executed'
 #echo 'Permission of exp.py granted'
 #echo 'ready to run exp.py'

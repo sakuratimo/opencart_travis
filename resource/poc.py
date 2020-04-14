@@ -65,7 +65,8 @@ def setdownload():
     r=requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data,verify=False)
     set2=r.status_code
     return set2
-   
+
+
 
 if __name__ == "__main__":
     n=loginad()
@@ -79,6 +80,7 @@ if __name__ == "__main__":
     addfile()
     n1=setfile()
     n2=setdownload()
+    
     if (n1==200 and n2==200):
         print("PoC success!")
     else:

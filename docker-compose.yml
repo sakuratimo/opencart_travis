@@ -49,6 +49,7 @@ services:
     container_name: poc-app
     depends_on:
       - opencart
+      - config
 
   
 

@@ -1,7 +1,7 @@
 import requests
 import os
 os.system('python3 poc.py')
-requests.packages.urllib3.disable_warnings()
+#requests.packages.urllib3.disable_warnings()
 host = 'opencart'
 
 def register():

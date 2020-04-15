@@ -6,4 +6,7 @@ ADD resource/exp.py /exp.py
 ADD resource/expinit.sh /expinit.sh
 ADD requirements_poc.txt /requirements_poc.txt
 
+RUN chmod +x /expinit.sh
+
+
 CMD ["bash", "-c", "echo 1 && bash expinit.sh"]

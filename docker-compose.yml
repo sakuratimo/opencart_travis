@@ -18,7 +18,7 @@ services:
       - MARIADB_PORT_NUMBER=3306
       - OPENCART_DATABASE_USER=bn_opencart
       - OPENCART_DATABASE_NAME=bitnami_opencart
-      - OPENCART_HOST=opencart66.com
+      - OPENCART_HOST=opencart
       - ALLOW_EMPTY_PASSWORD=yes
     container_name: web-app
     ports:
